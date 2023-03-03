@@ -100,7 +100,7 @@ namespace Alura.ByteBank.Infraestrutura.Testes
             //Assert
             Assert.True(adicionado);
         }
-
+        // Aqui é utilizado a biblioteca Moq para testar o COMPORTAMENTO do método e não seu retoro, isso é um MOCK
         [Fact]
         public void TestaObterAgenciasMock()
         {
