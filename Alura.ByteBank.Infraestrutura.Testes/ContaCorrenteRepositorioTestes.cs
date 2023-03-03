@@ -1,7 +1,10 @@
 ﻿using Alura.ByteBank.Dados.Repositorio;
 using Alura.ByteBank.Dominio.Entidades;
 using Alura.ByteBank.Dominio.Interfaces.Repositorios;
+using Alura.ByteBank.Infraestrutura.Testes.RepositorioFake;
+using Alura.ByteBank.Infraestrutura.Testes.RepositorioFake.DTO;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -104,6 +107,25 @@ namespace Alura.ByteBank.Infraestrutura.Testes
             var result = _repositorio.Excluir(3);
             //Assert
             Assert.True(result);
+        }
+
+        //Stub é o conceito onde voce testa o comportamento (igual ao Mock) mas tambem testa se o retorno esta correto
+        [Fact]
+        public void TestaConsultaPix()
+        {
+
+            //Arrange
+            var chaveGuid = new Guid("a0b80d53-c0dd-4897-ab90-c0615ad80d5a");
+            var pix = new PixDTO() { Chave = chaveGuid, Saldo = 10 };
+
+            var pixRepositorioMock = new Mock<IPixRepositorio>();
+            pixRepositorioMock.Setup(x => x.ConsultaPix(It.IsAny<Guid>())).Returns(pix);
+            var mock = pixRepositorioMock.Object;
+            //Act
+            var saldo = mock.ConsultaPix(chaveGuid).Saldo;
+            //Assert
+            Assert.Equal(10, saldo);
+
         }
     }
 }

@@ -5,6 +5,6 @@ namespace Alura.ByteBank.Infraestrutura.Testes.RepositorioFake
 {
     public interface IPixRepositorio
     {
-        public PixDTO consultaPix(Guid pix);
+        public PixDTO ConsultaPix(Guid pix);
     }
 }

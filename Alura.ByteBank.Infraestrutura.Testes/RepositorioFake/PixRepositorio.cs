@@ -27,7 +27,7 @@ namespace Alura.ByteBank.Infraestrutura.Testes.RepositorioFake
             };
         }
 
-        public PixDTO consultaPix(Guid chave)
+        public PixDTO ConsultaPix(Guid chave)
         {
             PixDTO dto = (from pix in this.Pixs
                           where pix.Chave == chave
